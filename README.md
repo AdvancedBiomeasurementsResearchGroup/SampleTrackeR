@@ -68,15 +68,15 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
 
 ### Description input arguments
 
-  + `sample_plate_layout` (required) Name of tab-delimited file of sample layout.
+  + `sample_plate_layout` (*required*) Name of tab-delimited file of sample layout.
   
-  + `read_count_table` (required) Name of tab-delimited file with read count data, including both synthetic spike-in controls and environmental OTUs.
+  + `read_count_table` (*required*) Name of tab-delimited file with read count data, including both synthetic spike-in controls and environmental OTUs.
   
-  + `stm_compositions` (required) Name of tab-delimited file with STM compositions.
+  + `stm_compositions` (*required*) Name of tab-delimited file with STM compositions.
   
-  + `read.threshold` (optional) Minimum number of reads for a given spike-in control to be scored as present (default 1).
+  + `read.threshold` (*optional*) Minimum number of reads for a given spike-in control to be scored as present (default 1).
   
-  + `fraction.threshold` (optional) Minimum fraction spike-in controls for a given STM to be scored as present (default 1).
+  + `fraction.threshold` (*optional*) Minimum fraction of spike-in controls for a given STM to be scored as present in order for the STM to be scored as present (default 1).
 
 ### Description outputs
 
