@@ -77,8 +77,9 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
   
   +  `stm_compositions` (required) Name of tab-delimited file with STM compositions.
   
-`read.threshold` (optional) Minimum number of reads for a given spike-in control to be scored as present (default 1).
-`fraction.threshold` (optional) Minimum fraction spike-in controls for a given STM to be scored as present (default 1).
+  +  `read.threshold` (optional) Minimum number of reads for a given spike-in control to be scored as present (default 1).
+  
+  +  `fraction.threshold` (optional) Minimum fraction spike-in controls for a given STM to be scored as present (default 1).
 
 ### Description outputs
 
@@ -99,3 +100,5 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
 `distinguishing_controls`, refers to the number of individual spike-in controls that are not shared between two different STMs. For evaluation of between-sample carry-over, the number of distinguishing controls is the number of spike-in controls present in the minority STM but absent in the majority STM.
 
 `percent_carryover`, refers to the estimated amount of sample carry-over between two samples, as quantified based on minority STMs.
+
+
