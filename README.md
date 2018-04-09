@@ -4,10 +4,11 @@ This repository described SampleTrackeR, an R script for sample assurance in mul
 
 ## Prerequisites
 
-`SampleTrackeR` depends on several external R packages that need to be installed and loaded.
+`SampleTrackeR` depends on a few external R packages that need to be installed and loaded.
 
 ```
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 ```
 
@@ -29,11 +30,11 @@ The following columns and matching names are required.
 
   + `libID`: name of the sample or sequencing library.
 
-  +  `stmID`: identifier of the STM to added to the sample.
+  + `stmID`: identifier of the STM to added to the sample.
 
-  +  `row`: row identifier (should be integer).
+  + `row`: row identifier (should be integer).
 
-  +  `column`: column identifier (should be integer).
+  + `column`: column identifier (should be integer).
 
 Other columns can be also added (*e.g.*, description in the example table below); these are however ignored and not included in any of the generated output files.
 
@@ -47,11 +48,11 @@ This tab-delimited file represents a long-format table with the composition of t
 
 The following columns as well as their names are required.
 
-  +  `stmID`: identifier of the STM
+  + `stmID`: identifier of the STM
   
-  +  `controlID`: identifier of the spike-in control
+  + `controlID`: identifier of the spike-in control
 
-  +  `value`: value indicating wether the spike-in control is present in the STM (1: present and 0: absent)
+  + `value`: value indicating wether the spike-in control is present in the STM (1: present and 0: absent)
 
 To allow analysis of samples lacking spike-in controls, a mock STM (*e.g.*, stm00) can be added with all values set to 0.
 
@@ -67,29 +68,29 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
 
 ### Description input arguments
 
-  +  `sample_plate_layout` (required) Name of tab-delimited file of sample layout.
+  + `sample_plate_layout` (required) Name of tab-delimited file of sample layout.
   
-  +  `read_count_table` (required) Name of tab-delimited file with read count data, including both synthetic spike-in controls and environmental OTUs.
+  + `read_count_table` (required) Name of tab-delimited file with read count data, including both synthetic spike-in controls and environmental OTUs.
   
-  +  `stm_compositions` (required) Name of tab-delimited file with STM compositions.
+  + `stm_compositions` (required) Name of tab-delimited file with STM compositions.
   
-  +  `read.threshold` (optional) Minimum number of reads for a given spike-in control to be scored as present (default 1).
+  + `read.threshold` (optional) Minimum number of reads for a given spike-in control to be scored as present (default 1).
   
-  +  `fraction.threshold` (optional) Minimum fraction spike-in controls for a given STM to be scored as present (default 1).
+  + `fraction.threshold` (optional) Minimum fraction spike-in controls for a given STM to be scored as present (default 1).
 
 ### Description outputs
 
 The output of `SampleTrackeR` is a list with four different objects. Assuming that the output list is called `out`, the resultant list contains the following:
 
-  +  `out$tab1`, a data frame containing a summary of the sample identification based on majority STMs.
+  + `out$tab1`, a data frame containing a summary of sample identification based on majority STMs.
 
-  +  `out$plot1`, a ggplot2 object visualizing of the sample identification.
+  + `out$plot1`, a ggplot2 object visualizing output of the sample identificationportion of the script.
 
-  +  `out$tab2`, a data frame containing a summary of between-sample carry-over based on minority STMs.
+  + `out$tab2`, a data frame containing a summary of between-sample carry-over based on minority STMs.
 
-  +  `out$plot2`, a ggplot2 object visualizing the output of the between-sample carry-over.
+  + `out$plot2`, a ggplot2 object visualizing output of the between-sample carry-over portion of the script.
   
-Note that `out$tab2` and `out$plot2` are only generated when minority STMs are identified in at least one of the samples. In case no minority STMs are found, a message will be output stated that between-sample carry-over was not evaluated, and hence assurmed to be minimal based on the lack of minority STMs.
+Note that `out$tab2` and `out$plot2` are *not* generated when no minority STMs are identified in any of the samples. In this case, a message will be output stated that between-sample carry-over was not evaluated, and hence assurmed to be minimal based on the lack of minority STMs.
 
 ###  Terminology
 
