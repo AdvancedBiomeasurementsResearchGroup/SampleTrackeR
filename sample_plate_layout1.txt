@@ -1,0 +1,17 @@
+libID	sample.description	stmID	row	column
+sam397	e2-2101	stm01	0	0
+sam398	e2-2102	stm02	0	0
+sam399	e2-2103	stm03	0	0
+sam396	e2-2104	stm04	0	0
+sam401	e2-2105	stm05	0	0
+sam402	e2-2106	stm06	0	0
+sam403	e2-2107	stm07	0	0
+sam404	e2-2108	stm08	0	0
+sam479	e2-2109	stm09	0	0
+sam414	e2-2110	stm10	0	0
+sam415	e2-2111	stm11	0	0
+sam412	e2-2112	stm12	0	0
+sam417	e2-2113	stm13	0	0
+sam418	e2-2114	stm14	0	0
+sam419	e2-2115	stm15	0	0
+sam482	e2-2116	stm16	0	0
