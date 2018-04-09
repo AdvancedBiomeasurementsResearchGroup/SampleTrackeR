@@ -7,11 +7,8 @@ This repository described SampleTrackeR, an R script for sample assurance in mul
 `SampleTrackeR` depends on several external R packages that need to be installed and loaded.
 
 ```
-library(reshape2)
 library(dplyr)
 library(ggplot2)
-library(ggthemes)
-library(tibble)
 ```
 
 The `SampleTrackeR` script is not part of an R package and the simplest way to load the script is by sourcing the code as follows:
@@ -38,11 +35,11 @@ The following columns and matching names are required.
 
   +  `column`: column identifier (should be integer).
 
-Other columns can be also added (e.g. description in the example table below); these are however ignored and not included in any of the generated output files.
+Other columns can be also added (*e.g.*, description in the example table below); these are however ignored and not included in any of the generated output files.
 
 ### read_count_table
 
-This tab-delimited file represent a typical OTU read count table. A column with name otuID is mandatory. Addition column names represent sample identifiers as in `sample_plate_layout`.
+This tab-delimited file represent a typical OTU read count table. A column with name otuID is mandatory. The other column names represent sample identifiers as in `sample_plate_layout`.
 
 ### stm_compositions
 
