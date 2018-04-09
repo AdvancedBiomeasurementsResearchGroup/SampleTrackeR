@@ -83,13 +83,15 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
 
 ### Description outputs
 
+The output of `SampleTrackeR` is a list with four different objects.
+
   +  `out$tab1` a data frame containing a summary of the sample identification based on majority STMs.
 
   +  `out$plot1` a ggplot2 object visualizing of the sample identification.
 
-`out$tab2`, a data frame containing a summary of between-sample carry-over based on minority STMs.
+  +  `out$tab2`, a data frame containing a summary of between-sample carry-over based on minority STMs.
 
-`out$plot2`, a ggplot2 object visualizing the output of the between-sample carry-over.
+  +  `out$plot2`, a ggplot2 object visualizing the output of the between-sample carry-over.
 
 ###  Terminology
 
