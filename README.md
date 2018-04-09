@@ -7,9 +7,8 @@ This repository described SampleTrackeR, an R script for sample assurance in mul
 `SampleTrackeR` depends on several external R packages that need to be installed and loaded.
 
 ```
-library(magrittr)
-library(dplyr)
 library(reshape2)
+library(dplyr)
 library(ggplot2)
 library(ggthemes)
 library(tibble)
@@ -83,15 +82,17 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
 
 ### Description outputs
 
-The output of `SampleTrackeR` is a list with four different objects.
+The output of `SampleTrackeR` is a list with four different objects. Assuming that the output list is called `out`, the resultant list contains the following:
 
-  +  `out$tab1` a data frame containing a summary of the sample identification based on majority STMs.
+  +  `out$tab1`, a data frame containing a summary of the sample identification based on majority STMs.
 
-  +  `out$plot1` a ggplot2 object visualizing of the sample identification.
+  +  `out$plot1`, a ggplot2 object visualizing of the sample identification.
 
   +  `out$tab2`, a data frame containing a summary of between-sample carry-over based on minority STMs.
 
   +  `out$plot2`, a ggplot2 object visualizing the output of the between-sample carry-over.
+  
+Note that `out$tab2` and `out$plot2` are only generated when minority STMs are identified in at least one of the samples. In case no minority STMs are found, a message will be output stated that between-sample carry-over was not evaluated, and hence assurmed to be minimal based on the lack of minority STMs.
 
 ###  Terminology
 
