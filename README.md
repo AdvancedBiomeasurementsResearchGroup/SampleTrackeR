@@ -1,4 +1,4 @@
-# Contents
+## Contents
 
 This repository describes `SampleTrackeR`, an R script for sample assurance in multiplexed sequencing experiments, based on tagging of samples with synthetic spike-in control mixtures (STMs).
 
@@ -18,13 +18,13 @@ library(ggplot2)
 source("/absolute/path/to/SampleTrackeR.R")
 ```
 
-Note that the `SampleTrackeR` script sets the current directory as the path when searching for input files (`path <- getwd()`); all input files thus need to be present in the current directory.
+Note that the script sets the current directory as the path when searching for input files (`path <- getwd()`); all input files thus need to be present in the current directory.
 
 ## Description of input files
 
 ### sample_plate_layout
 
-This tab-delimited file describes the experiments, namely plate layout and STM added to each sample / sequencing library. Samples lacking STMs can be added using a mock STM (designated *e.g.*, stm0); the mock STM compoistion should also be present in the stm_compositions file (see below for details).
+This tab-delimited file describes the experiments, namely plate layout and STM added to each sample / sequencing library. Samples lacking STMs can be added using a *mock* STM (designated *e.g.*, stm0); the mock STM composition should also be present in the `stm_compositions` file (see below for details).
 
 The following columns and matching names are required.
 
@@ -36,7 +36,7 @@ The following columns and matching names are required.
 
   + `column`: column identifier (should be integer).
 
-Other columns can be also added (*e.g.*, description in the example table below); these are however ignored and not included in any of the generated output files.
+Other columns can be present (*e.g.*, *description* in the example table below); these are however ignored and not included in any of the generated output files.
 
 | libID | stmID | row | column | description |
 | ------|-------|-----|--------| --------|
@@ -47,11 +47,10 @@ Other columns can be also added (*e.g.*, description in the example table below)
 | lib4 | stm0 | 6 | 12 | soil |
 | lib5 | stm0 | 7 | 12 | sludge |
 | lib6 | stm0 | 8 | 12 | feces |
-| ... | ...  | ... | ... |
 
 ### read_count_table
 
-This tab-delimited file represent a typical OTU read count table. A column with name otuID is mandatory. The other column names represent sample identifiers as in `sample_plate_layout`.
+This tab-delimited file represent a typical OTU read count table. A column with name `otuID` is mandatory. The other column names represent sample identifiers as in the `sample_plate_layout` file.
 
 | otuID | lib1 | lib2 | ... |
 | ------|-------|-----|--------|
@@ -91,7 +90,7 @@ The following columns and matching names are required.
 | stm0 | control2  | 0 | 
 | stm0 | control3  | 0 | 
 
-To allow analysis of samples lacking spike-in controls, a mock STM (*e.g.*, stm00) can be added with all values set to 0.
+For the mock STM for samples without added STMs, all values should be set to 0.
 
 ## General usage, output and terminology
 
@@ -107,7 +106,7 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
 
   + `sample_plate_layout` (*required*) Name of tab-delimited file of sample layout.
   
-  + `read_count_table` (*required*) Name of tab-delimited file with read count data, including both synthetic spike-in controls and environmental OTUs.
+  + `read_count_table` (*required*) Name of tab-delimited file with read count data, including both synthetic spike-in controls and sample OTUs.
   
   + `stm_compositions` (*required*) Name of tab-delimited file with STM compositions.
   
