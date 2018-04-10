@@ -2,7 +2,17 @@
 
 This repository describes `SampleTrackeR`, an R script for sample assurance in multiplexed sequencing experiments, based on tagging of samples with synthetic spike-in control mixtures (STMs).
 
-## Prerequisites
+The following files are available in this repository.
+
+1. "SampleTrackeR.R", source code.
+
+2. Data files for results presented in Tourlousse *et al.* (see citation), namely "sample_plate_layout1.txt", "sample_plate_layout2.txt", "sample_plate_layout3.txt", "read_count_table1.txt", "read_count_table2.txt", "read_count_table3.txt" and "stm_compositions.txt".
+
+3. "SampleTrackeR.nb.html", notebook demonstrating the usage of `SampleTrackeR` using the above data sets.
+
+## Using SampleTrackeR
+
+### Prerequisites
 
 `SampleTrackeR` depends on a small number of external R packages that need to be installed and loaded.
 
@@ -20,9 +30,9 @@ source("/absolute/path/to/SampleTrackeR.R")
 
 Note that the script sets the current directory as the path when searching for input files (`path <- getwd()`); all input files thus need to be present in the current directory.
 
-## Description of input files
+### Description of input files
 
-### sample_plate_layout
+#### sample_plate_layout
 
 This tab-delimited file describes the experiments, namely plate layout and STM added to each sample / sequencing library. Samples lacking STMs can be added using a *mock* STM (designated *e.g.*, stm0); the mock STM composition should also be present in the `stm_compositions` file (see below for details).
 
@@ -48,7 +58,7 @@ Other columns can be present (*e.g.*, *description* in the example table below);
 | lib5 | stm0 | 7 | 12 | sludge |
 | lib6 | stm0 | 8 | 12 | feces |
 
-### read_count_table
+#### read_count_table
 
 This tab-delimited file represent a typical OTU read count table. A column with name `otuID` is mandatory. The other column names represent sample identifiers as in the `sample_plate_layout` file.
 
@@ -62,7 +72,7 @@ This tab-delimited file represent a typical OTU read count table. A column with 
 | OTU2 | 6  | 567 | ... |
 | ... | ...  | ... | ... |
 
-### stm_compositions
+#### stm_compositions
 
 This tab-delimited file represents a long-format table with the composition of the STMs.
 
@@ -92,7 +102,7 @@ The following columns and matching names are required.
 
 For the mock STM for samples without added STMs, all values should be set to 0.
 
-## General usage, output and terminology
+### General usage, output and terminology
 
 ```
 out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
@@ -102,7 +112,7 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
                      fraction.threshold = 1)
 ```
 
-### Description input arguments
+#### Description input arguments
 
   + `sample_plate_layout` (*required*) Name of tab-delimited file of sample layout.
   
@@ -114,7 +124,7 @@ out <- SampleTrackeR(sample_plate_layout = "sample_plate_layout.txt",
   
   + `fraction.threshold` (*optional*) Minimum fraction of spike-in controls for a given STM to be scored as present in order for the STM to be scored as present (default 1).
 
-### Description outputs
+#### Description outputs
 
 The output of `SampleTrackeR` is a list with four different objects. Assuming that the output list is called `out`, the resultant list contains the following:
 
@@ -128,21 +138,21 @@ The output of `SampleTrackeR` is a list with four different objects. Assuming th
   
 Note that `out$tab2` and `out$plot2` are *not* generated when no minority STMs are identified in any of the samples. In this case, a message will be output stated that between-sample carry-over was not evaluated, and hence assurmed to be minimal based on the lack of minority STMs.
 
-###  Terminology
+####  Terminology
 
-`majority_STM`, refers to the STM with the highest cumulative read count in a given sample. The majority STM is used to assign sample identity and detect/resolve potential sample swaps.
+  + `majority_STM`, refers to the STM with the highest cumulative read count in a given sample. The majority STM is used to assign sample identity and detect/resolve potential sample swaps.
 
-`minority_STM`, refers to STMs present in a sample, excluding the majority STM. A sample can contain multiple minority STMs and these are used for assessment of between-sample carry-over (that is, cross-contamination).
+  + `minority_STM`, refers to STMs present in a sample, excluding the majority STM. A sample can contain multiple minority STMs and these are used for assessment of between-sample carry-over (that is, cross-contamination).
 
-`distinguishing_controls`, refers to the number of individual spike-in controls that are not shared between two different STMs. For evaluation of between-sample carry-over, the number of distinguishing controls is the number of spike-in controls present in the minority STM but absent in the majority STM.
+  + `distinguishing_controls`, refers to the number of individual spike-in controls that are not shared between two different STMs. For evaluation of between-sample carry-over, the number of distinguishing controls is the number of spike-in controls present in the minority STM but absent in the majority STM.
 
-`percent_carryover`, refers to the estimated amount of sample carry-over between two samples, as quantified based on minority STMs.
+  + `percent_carryover`, refers to the estimated amount of sample carry-over between two samples, as quantified based on minority STMs.
 
-## Citation
+### Citation
 
 **Dieter M. Tourlousse, Akiko Ohashi, Yuji Sekiguchi.** Sample tracking in microbiome community profiling assays using synthetic 16S rRNA gene spike-in controls. *Manuscript in revision.*
 
-## Contact
+### Contact
 
 Dieter Tourlousse: dieter.tourlousse@aist.go.jp
 
