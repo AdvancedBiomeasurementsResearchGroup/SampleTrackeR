@@ -67,7 +67,7 @@ This tab-delimited file represent a typical OTU read count table. A column with 
 
 This tab-delimited file represents a long-format table with the composition of the STMs.
 
-The following columns as well as their names are required.
+The following columns and matching names are required.
 
   + `stmID`: identifier of the STM
   
@@ -121,11 +121,11 @@ The output of `SampleTrackeR` is a list with four different objects. Assuming th
 
   + `out$tab1`, a data frame containing a summary of sample identification based on majority STMs.
 
-  + `out$plot1`, a ggplot2 object visualizing output of the sample identificationportion of the script.
+  + `out$plot1`, a ggplot2 object visualizing the output of the sample identification portion of the script.
 
   + `out$tab2`, a data frame containing a summary of between-sample carry-over based on minority STMs.
 
-  + `out$plot2`, a ggplot2 object visualizing output of the between-sample carry-over portion of the script.
+  + `out$plot2`, a ggplot2 object visualizing the output of the between-sample carry-over portion of the script.
   
 Note that `out$tab2` and `out$plot2` are *not* generated when no minority STMs are identified in any of the samples. In this case, a message will be output stated that between-sample carry-over was not evaluated, and hence assurmed to be minimal based on the lack of minority STMs.
 
