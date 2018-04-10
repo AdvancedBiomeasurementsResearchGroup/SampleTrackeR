@@ -1,10 +1,10 @@
-# SampleTrackeR
+# Contents
 
-This repository described SampleTrackeR, an R script for sample assurance in multiplexed sequencing experiments, based on tagging of samples with synthetic spike-in control mixtures (STMs).
+This repository describes `SampleTrackeR`, an R script for sample assurance in multiplexed sequencing experiments, based on tagging of samples with synthetic spike-in control mixtures (STMs).
 
 ## Prerequisites
 
-`SampleTrackeR` depends on a few external R packages that need to be installed and loaded.
+`SampleTrackeR` depends on a small number of external R packages that need to be installed and loaded.
 
 ```
 library(dplyr)
@@ -12,19 +12,19 @@ library(tidyr)
 library(ggplot2)
 ```
 
-The `SampleTrackeR` script is not part of an R package and the simplest way to load the script is by sourcing the code as follows:
+`SampleTrackeR` consists of a single script that can be loaded by sourcing the code.
 
 ```
 source("/absolute/path/to/SampleTrackeR.R")
 ```
 
-Note that the `SampleTrackeR` script sets the current working directory as the path when searching for input files; all input files (see below for details) thus need to be present in the current working directory.
+Note that the `SampleTrackeR` script sets the current directory as the path when searching for input files (`path <- getwd()`); all input files thus need to be present in the current directory.
 
 ## Description of input files
 
 ### sample_plate_layout
 
-This tab-delimited file describes the experiments, namely plate layout and STM added to each sample / sequencing library. Samples lacking STMs can be added using a mock STM (designated *e.g.*, stm00); the mock STM compoistion should also be present in the stm_compositions file (see below for details).
+This tab-delimited file describes the experiments, namely plate layout and STM added to each sample / sequencing library. Samples lacking STMs can be added using a mock STM (designated *e.g.*, stm0); the mock STM compoistion should also be present in the stm_compositions file (see below for details).
 
 The following columns and matching names are required.
 
@@ -38,9 +38,30 @@ The following columns and matching names are required.
 
 Other columns can be also added (*e.g.*, description in the example table below); these are however ignored and not included in any of the generated output files.
 
+| libID | stmID | row | column | description |
+| ------|-------|-----|--------| --------|
+| lib1 | stm1 | 1 | 1 | soil_stm1 |
+| lib2 | stm2 | 2 | 1 | sludge_stm2 |
+| lib3 | stm3 | 3 | 1 | feces_stm3 |
+| ... | ...  | ... | ... |
+| lib4 | stm0 | 6 | 12 | soil |
+| lib5 | stm0 | 7 | 12 | sludge |
+| lib6 | stm0 | 8 | 12 | feces |
+| ... | ...  | ... | ... |
+
 ### read_count_table
 
 This tab-delimited file represent a typical OTU read count table. A column with name otuID is mandatory. The other column names represent sample identifiers as in `sample_plate_layout`.
+
+| otuID | lib1 | lib2 | ... |
+| ------|-------|-----|--------|
+| control1 | 101 | 231 | ... |
+| control2 | 3  | 10 | ... |
+| control3 | 0 | 1 | ... |
+| ... | ...  | ... | ... |
+| OTU1 | 0  | 5 | ... |
+| OTU2 | 6  | 567 | ... |
+| ... | ...  | ... | ... |
 
 ### stm_compositions
 
@@ -53,6 +74,22 @@ The following columns as well as their names are required.
   + `controlID`: identifier of the spike-in control
 
   + `value`: value indicating wether the spike-in control is present in the STM (1: present and 0: absent)
+  
+| stmID | controlID | value | 
+| ------|-------|-----|
+| stm1 | control1 | 1 | 
+| stm1 | control2  | 1 | 
+| stm1 | control3  | 0 | 
+| stm2 | control1 | 1 | 
+| stm2 | control2  | 0 | 
+| stm2 | control3  | 1 |  
+| stm3 | control1 | 0 | 
+| stm3 | control2  | 1 | 
+| stm3 | control3  | 1 | 
+| ... | ...  | ... | 
+| stm0 | control1  | 0 | 
+| stm0 | control2  | 0 | 
+| stm0 | control3  | 0 | 
 
 To allow analysis of samples lacking spike-in controls, a mock STM (*e.g.*, stm00) can be added with all values set to 0.
 
