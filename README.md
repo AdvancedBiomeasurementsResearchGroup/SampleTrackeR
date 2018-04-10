@@ -138,4 +138,11 @@ Note that `out$tab2` and `out$plot2` are *not* generated when no minority STMs a
 
 `percent_carryover`, refers to the estimated amount of sample carry-over between two samples, as quantified based on minority STMs.
 
+## Citation
+
+**Dieter M. Tourlousse, Akiko Ohashi, Yuji Sekiguchi.** Sample tracking in microbiome community profiling assays using synthetic 16S rRNA gene spike-in controls. *Manuscript in revision.*
+
+## Contact
+
+Dieter Tourlousse: dieter.tourlousse@aist.go.jp
 
