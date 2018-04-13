@@ -61,7 +61,7 @@ Other columns can be present (*e.g.*, *description* in the example table below);
 
 #### read_count_table
 
-This tab-delimited file represent a typical OTU read count table. A column with name `otuID` is mandatory. The other column names represent sample identifiers as in the `sample_plate_layout` file.
+This tab-delimited file represent a typical OTU read count table. Read counts for both the individual spike-in controls, as in the `stm_compositions` file (see below) and sample OTUs can be present.A column with name `otuID` is mandatory. The other column names represent sample identifiers as in the `sample_plate_layout` file (see above).
 
 | otuID | lib1 | lib2 | ... |
 | ------|-------|-----|--------|
@@ -101,7 +101,7 @@ The following columns and matching names are required.
 | stm0 | control2  | 0 | 
 | stm0 | control3  | 0 | 
 
-For the mock STM for samples without added STMs, all values should be set to 0.
+For the mock STM for samples without added STMs, all values should be set to 0, as shown in the above table.
 
 ### General usage, output and terminology
 
