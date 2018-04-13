@@ -8,7 +8,7 @@ The following files are available in this repository.
 
 2. Data files for results presented in Tourlousse *et al.* (see citation), namely "sample_plate_layout1.txt", "sample_plate_layout2.txt", "sample_plate_layout3.txt", "read_count_table1.txt", "read_count_table2.txt", "read_count_table3.txt" and "stm_compositions.txt".
 
-3. "SampleTrackeR.nb.html", notebook demonstrating the usage of `SampleTrackeR` using the above data sets.
+3. "SampleTrackeR.nb.html", an HTML file demonstrating the usage of `SampleTrackeR` using the above data sets.
 
 ## Using SampleTrackeR
 
@@ -17,6 +17,7 @@ The following files are available in this repository.
 `SampleTrackeR` depends on a small number of external R packages that need to be installed and loaded.
 
 ```
+library(magrittr)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -28,7 +29,7 @@ library(ggplot2)
 source("/absolute/path/to/SampleTrackeR.R")
 ```
 
-Note that the script sets the current directory as the path when searching for input files (`path <- getwd()`); all input files thus need to be present in the current directory.
+Note that the script automaticcaly sets the current directory as the path to search for input files (internally, `path <- getwd()`). All input files thus need to be present in the current directory.
 
 ### Description of input files
 
