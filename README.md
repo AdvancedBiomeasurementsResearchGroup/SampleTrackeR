@@ -29,7 +29,7 @@ library(ggplot2)
 source("/absolute/path/to/SampleTrackeR.R")
 ```
 
-Note that the script automaticcaly sets the current directory as the path to search for input files (internally, `path <- getwd()`). All input files thus need to be present in the current directory.
+Note that the script automatically sets the current directory as search path when looking for input files (internally, `input.search.path <- getwd()`). All input files thus need to be present in the current directory.
 
 ### Description of input files
 
