@@ -35,7 +35,7 @@ Note that the script automatically sets the current directory as search path whe
 
 #### sample_plate_layout
 
-This tab-delimited file describes the experiments, namely plate layout and STM added to each sample / sequencing library. Samples lacking STMs can be added using a *mock* STM (designated *e.g.*, stm0); the mock STM composition should also be present in the `stm_compositions` file (see below for details).
+This tab-delimited file describes the experimental setup, namely plate layout and STM added to each of the samples. Samples lacking STMs can be added using a *mock* STM (designated *e.g.* stm00); the mock STM composition should also be present in the `stm_compositions` file (see below for details). 
 
 The following columns and matching names are required.
 
@@ -51,17 +51,17 @@ Other columns can be present (*e.g.*, *description* in the example table below);
 
 | libID | stmID | row | column | description |
 | ------|-------|-----|--------| --------|
-| lib1 | stm1 | 1 | 1 | soil_stm1 |
-| lib2 | stm2 | 2 | 1 | sludge_stm2 |
-| lib3 | stm3 | 3 | 1 | feces_stm3 |
+| lib1 | stm01 | 1 | 1 | soil_stm01 |
+| lib2 | stm02 | 2 | 1 | sludge_stm20 |
+| lib3 | stm03 | 3 | 1 | feces_stm03 |
 | ... | ...  | ... | ... |
-| lib4 | stm0 | 6 | 12 | soil |
-| lib5 | stm0 | 7 | 12 | sludge |
-| lib6 | stm0 | 8 | 12 | feces |
+| lib4 | stm00 | 6 | 12 | soil |
+| lib5 | stm00 | 7 | 12 | sludge |
+| lib6 | stm00 | 8 | 12 | feces |
 
 #### read_count_table
 
-This tab-delimited file represent a typical OTU read count table. Read counts for both the individual spike-in controls, as in the `stm_compositions` file (see below) and sample OTUs can be present.A column with name `otuID` is mandatory. The other column names represent sample identifiers as in the `sample_plate_layout` file (see above).
+This tab-delimited file represent a typical OTU read count table. Read counts for both the individual spike-in controls, as in the `stm_compositions` file (see below), and sample OTUs can be present. A column with name `otuID` is mandatory. The other column names represent sample identifiers as in the `sample_plate_layout` file (see above).
 
 | otuID | lib1 | lib2 | ... |
 | ------|-------|-----|--------|
@@ -87,21 +87,21 @@ The following columns and matching names are required.
   
 | stmID | controlID | value | 
 | ------|-------|-----|
-| stm1 | control1 | 1 | 
-| stm1 | control2  | 1 | 
-| stm1 | control3  | 0 | 
-| stm2 | control1 | 1 | 
-| stm2 | control2  | 0 | 
-| stm2 | control3  | 1 |  
-| stm3 | control1 | 0 | 
-| stm3 | control2  | 1 | 
-| stm3 | control3  | 1 | 
+| stm01 | control1 | 1 | 
+| stm01 | control2  | 1 | 
+| stm01 | control3  | 0 | 
+| stm02 | control1 | 1 | 
+| stm02 | control2  | 0 | 
+| stm02 | control3  | 1 |  
+| stm03 | control1 | 0 | 
+| stm03 | control2  | 1 | 
+| stm03 | control3  | 1 | 
 | ... | ...  | ... | 
-| stm0 | control1  | 0 | 
-| stm0 | control2  | 0 | 
-| stm0 | control3  | 0 | 
+| stm00 | control1  | 0 | 
+| stm00 | control2  | 0 | 
+| stm00 | control3  | 0 | 
 
-For the mock STM for samples without added STMs, all values should be set to 0, as shown in the above table.
+For the mock STM (here stm00) for samples without added STMs, all values should be set to 0, as shown in the above table.
 
 ### General usage, output and terminology
 
