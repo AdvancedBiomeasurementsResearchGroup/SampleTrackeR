@@ -151,7 +151,7 @@ Note that `out$tab2` and `out$plot2` are *not* generated when no minority STMs a
 
 ### Citation
 
-**Dieter M. Tourlousse, Akiko Ohashi, Yuji Sekiguchi (2018)** Sample tracking in microbiome community profiling assays using synthetic 16S rRNA gene spike-in controls. *Scientific Reports* 8:9095.
+Dieter M. Tourlousse, Akiko Ohashi, Yuji Sekiguchi (2018) Sample tracking in microbiome community profiling assays using synthetic 16S rRNA gene spike-in controls. *Scientific Reports* 8:9095.
 
 ### Contact
 
