@@ -137,7 +137,7 @@ The output of `SampleTrackeR` is a list with four different objects. Assuming th
 
   + `out$plot2`, a ggplot2 object visualizing the output of the between-sample carry-over portion of the script.
   
-Note that `out$tab2` and `out$plot2` are *not* generated when no minority STMs are identified in any of the samples. In this case, a message will be output stated that between-sample carry-over was not evaluated, and hence assurmed to be minimal based on the lack of minority STMs.
+Note that `out$tab2` and `out$plot2` are *not* generated when no minority STMs are identified in any of the samples. In this case, a message will be output stating that between-sample carry-over was not evaluated, and hence assumed to be minimal based on the lack of minority STMs.
 
 ####  Terminology
 
